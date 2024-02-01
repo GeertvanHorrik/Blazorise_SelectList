@@ -14,9 +14,21 @@ Welcome to your new app.
             Data="@_models"
             TextField="@((item)=>item.DisplayName)"
             ValueField="@((item)=>item.Name)"
-            @bind-SelectedValue="@SelectedValue" />
+            @bind-SelectedValue="@SelectedValue1" />
 
-<span>@SelectedValue</span>
+<span>@SelectedValue1</span>
+
+
+<SelectList Style="width: 200px"
+            TItem="MyModel"
+            TValue="string"
+            Data="@_models"
+            TextField="@((item)=>item.DisplayName)"
+            ValueField="@((item)=>item.Name)"
+            @bind-SelectedValue="@SelectedValue2" />
+
+<span>@SelectedValue2</span>
+
 
 @code {
     private readonly List<MyModel> _models = new List<MyModel>(new[]
@@ -26,5 +38,12 @@ Welcome to your new app.
         new MyModel { Name = "item 3" }
     });
 
-    public string SelectedValue { get; set; }
+    public Home()
+    {
+        SelectedValue2 = "item 3";
+    }
+
+    public string SelectedValue1 { get; set; }
+
+    public string SelectedValue2 { get; set; }
 }
