@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlazorApp1</title>
+    <base href="/" />
+    <link rel="stylesheet" href="css/app.css" />
+    <!-- If you add any scoped CSS files, uncomment the following to load them
+    <link href="BlazorApp1.styles.css" rel="stylesheet" /> -->
+
+    <link href="vendor/antd/antd.min.css" rel="stylesheet" />
+    <link href="vendor/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
+
+    <link href="_content/Blazorise/blazorise.css?v=1.4.2.0" rel="stylesheet" />
+    <link href="_content/Blazorise.AntDesign/blazorise.antdesign.min.css?v=1.4.2.0" rel="stylesheet" />
+    <link href="_content/Blazorise.Snackbar/blazorise.snackbar.css?v=1.4.2.0" rel="stylesheet" />
+    <link href="_content/Blazorise.SpinKit/blazorise.spinkit.css?v=1.4.2.0" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="vendor/luxon/luxon.min.js" type="text/javascript"></script>
+    <script src="vendor/chart.js/chart.min.js" type="text/javascript"></script>
+    <script src="vendor/chartjs-adapter-luxon/chartjs-adapter-luxon.umd.min.js" type="text/javascript"></script>
+
+    <!-- Blazorise core -->
+    <script src="_content/Blazorise/breakpoint.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/button.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/closable.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/colorPicker.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/datePicker.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/dragDrop.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/dropdown.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/fileEdit.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/filePicker.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/inputMask.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/io.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/memoEdit.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/numericPicker.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/observer.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/table.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/textEdit.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/theme.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/timePicker.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/tooltip.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise/utilities.js?v=1.4.2.0" type="module"></script>
+
+    <!-- Blazorise extensions -->
+    <script src="_content/Blazorise.Animate/blazorise.animate.js?v=1.4.2.0"></script>
+    <script src="_content/Blazorise.Charts/charts.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise.DataGrid/datagrid.js?v=1.4.2.0" type="module"></script>
+
+    <!-- Theme specific -->
+    <script src="_content/Blazorise.AntDesign/modal.js?v=1.4.2.0" type="module"></script>
+    <script src="_content/Blazorise.AntDesign/tooltip.js?v=1.4.2.0" type="module"></script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

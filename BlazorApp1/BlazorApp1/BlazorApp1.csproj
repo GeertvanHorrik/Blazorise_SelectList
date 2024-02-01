@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
+		<PackageReference Include="Blazorise.Animate" Version="1.4.2" />
+		<PackageReference Include="Blazorise.AntDesign" Version="1.4.2" />
+		<PackageReference Include="Blazorise.Charts" Version="1.4.2" />
+		<PackageReference Include="Blazorise.Components" Version="1.4.2" />
+		<PackageReference Include="Blazorise.DataGrid" Version="1.4.2" />
+		<PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.4.2" />
+		<PackageReference Include="Blazorise.SpinKit" Version="1.4.2" />
+
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
+	</ItemGroup>
+	
+	<!-- The SDK includes some conflict resolution targets that check for duplicate items in the publish targets. It's very greedy
+       and ends up marking the same files in different projects as duplicates of each other. We disable this check here to work
+       around this issue. -->
+	<PropertyGroup>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+	</PropertyGroup>
+
+	<!-- Note: only copy files in debug mode, we don't want automatic actions in release mode / during publishing -->
+
+	<Target Name="PreBuild - Copy javascript dependencies" AfterTargets="NpmInstall" Condition="'$(Configuration)'=='Debug'">
+		<Exec Command="xcopy /s /f /y &quot;$(ProjectDir)node_modules\antd\dist\&quot; &quot;$(ProjectDir)wwwroot\vendor\antd\&quot;" />
+		<Exec Command="xcopy /f /y &quot;$(ProjectDir)node_modules\chart.js\dist\chart.min.js&quot; &quot;$(ProjectDir)wwwroot\vendor\chart.js\&quot;" />
+		<Exec Command="xcopy /f /y &quot;$(ProjectDir)node_modules\chartjs-adapter-luxon\dist\chartjs-adapter-luxon.umd.min.js&quot; &quot;$(ProjectDir)wwwroot\vendor\chartjs-adapter-luxon\&quot;" />
+		<Exec Command="xcopy /f /y &quot;$(ProjectDir)node_modules\chartjs-plugin-annotation\dist\chartjs-plugin-annotation.min.js&quot; &quot;$(ProjectDir)wwwroot\vendor\chartjs-plugin-annotation\&quot;" />
+		<Exec Command="xcopy /f /y &quot;$(ProjectDir)node_modules\chartjs-plugin-datalabels\dist\chartjs-plugin-datalabels.min.js&quot; &quot;$(ProjectDir)wwwroot\vendor\chartjs-plugin-datalabels\&quot;" />
+		<Exec Command="xcopy /f /y &quot;$(ProjectDir)node_modules\chartjs-plugin-streaming\dist\chartjs-plugin-streaming.min.js&quot; &quot;$(ProjectDir)wwwroot\vendor\chartjs-plugin-streaming\&quot;" />
+		<Exec Command="xcopy /f /y &quot;$(ProjectDir)node_modules\luxon\build\global\luxon.min.js&quot; &quot;$(ProjectDir)wwwroot\vendor\luxon\&quot;" />
+	</Target>
+
+	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp" BeforeTargets="BeforeBuild" Condition="'$(Configuration)'=='Debug'">
+		<!--
+        Use npm install or npm ci depending on RestorePackagesWithLockFile value.
+        Uncomment the following lines if you want to use this feature:
+
+        <PropertyGroup>
+          <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        </PropertyGroup>
+     -->
+		<Exec Command="npm ci" Condition="'$(RestorePackagesWithLockFile)' == 'true'" />
+		<Exec Command="npm install" Condition="'$(RestorePackagesWithLockFile)' != 'true'" />
+
+		<!-- Write the stamp file, so incremental builds work -->
+		<Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
+	</Target>
+
+</Project>

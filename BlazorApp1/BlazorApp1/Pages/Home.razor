@@ -1,0 +1,30 @@
+﻿@page "/"
+@using BlazorApp1.Models
+@using Blazorise.Components
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SelectList Style="width: 200px"
+            TItem="MyModel"
+            TValue="string"
+            Data="@_models"
+            TextField="@((item)=>item.DisplayName)"
+            ValueField="@((item)=>item.Name)"
+            @bind-SelectedValue="@SelectedValue" />
+
+<span>@SelectedValue</span>
+
+@code {
+    private readonly List<MyModel> _models = new List<MyModel>(new[]
+        {
+        new MyModel { Name = "item 1" },
+        new MyModel { Name = "item 2" },
+        new MyModel { Name = "item 3" }
+    });
+
+    public string SelectedValue { get; set; }
+}
