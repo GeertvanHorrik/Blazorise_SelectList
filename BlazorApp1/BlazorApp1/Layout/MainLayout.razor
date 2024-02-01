@@ -1,3 +1,25 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<Layout>
+    <!-- Header -->
+    <LayoutHeader Fixed>
+        <TopMenu />
+    </LayoutHeader>
+
+    <!-- Side + body -->
+    <Layout Sider
+            Style="margin-top: 65px;">
+        <LayoutSider>
+            <LayoutSiderContent>
+                <SideMenu />
+            </LayoutSiderContent>
+        </LayoutSider>
+        <Layout>
+            <LayoutContent>
+                <div class="content">
+                    @Body
+                </div>
+            </LayoutContent>
+        </Layout>
+    </Layout>
+</Layout>
