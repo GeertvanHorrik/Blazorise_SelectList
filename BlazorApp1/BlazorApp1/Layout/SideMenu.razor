@@ -7,6 +7,23 @@
      CollapseMode="BarCollapseMode.Hide">
     <BarMenu>
         <BarStart>
+            <BarItem>
+                <BarDropdown Visible="true">
+                    <BarDropdownToggle>
+                        Repros
+                    </BarDropdownToggle>
+
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="/selectlist" Title="SelectList">
+                            SelectList
+                        </BarDropdownItem>
+
+                        <BarDropdownItem To="/datagrid" Title="DataGrid">
+                            DataGrid
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
         </BarStart>
     </BarMenu>
 </Bar>

@@ -1,0 +1,68 @@
+﻿@page "/datagrid"
+
+@using BlazorApp1.Models
+@using Blazorise.Components
+@using Blazorise.DataGrid
+
+<Breadcrumb>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem Active>
+        <BreadcrumbLink To="#">DataGrid</BreadcrumbLink>
+    </BreadcrumbItem>
+</Breadcrumb>
+
+<Heading Size="HeadingSize.Is1">DataGrid</Heading>
+
+<Button Class="top-right-floating-button">
+    Button A
+</Button>
+<Button Class="top-right-floating-button">
+    Button B
+</Button>
+
+@* <div style="clear: both;"> *@
+
+<DataGrid TItem="MyModel"
+          Data="_models"
+          EditMode="DataGridEditMode.Popup"
+          ShowPager
+          PageSize="10"
+          CurrentPage="1"
+          TotalItems="10"
+          Responsive>
+    <DataGridColumn Field="@nameof(MyModel.Name)"
+                    Caption="Name"
+                    Sortable="false" />
+    <DataGridColumn Field="@nameof(MyModel.DisplayName)"
+                    Caption="Display name"
+                    Sortable="false" />
+    <DataGridColumn Caption="Actions"
+                    Width="50"
+                    Sortable="false">
+        <DisplayTemplate>
+            <Button Color="Color.Primary"
+                    Style="margin: 5px">
+                Edit
+            </Button>
+            <Button Color="Color.Danger"
+                    Style="margin: 5px">
+                Delete
+            </Button>
+        </DisplayTemplate>
+    </DataGridColumn>
+</DataGrid>
+
+@* </div> *@
+
+
+@code {
+    private readonly List<MyModel> _models = new List<MyModel>(new[]
+    {
+        new MyModel { Name = "item 1" },
+        new MyModel { Name = "item 2" },
+        new MyModel { Name = "item 3" }
+    });
+
+}
